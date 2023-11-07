@@ -13,8 +13,8 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: myapp-deployment
-        image: docker push ghalamif/web-app:latest
+      - name: myapp
+        image: nanajanashia/argocd-app:1.0
         resources:
           limits:
             memory: "128Mi"

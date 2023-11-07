@@ -5,18 +5,19 @@ metadata:
   namespace: argocd
 spec:
   project: default
+
   source:
-    repoURL: https://github.com/ghalamif/faps/argocd-app-config.git
+    repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
     path: dev
-  destination:
-    server: https://kubernetes.default.svc  #internal service name for api server
+  destination: 
+    server: https://kubernetes.default.svc
     namespace: myapp
 
-    
   syncPolicy:
     syncOptions:
-    - createNamespace=true
-    automated: 
+    - CreateNamespace=true
+
+    automated:
       selfHeal: true
       prune: true

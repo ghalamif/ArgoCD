@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: nanajanashia/argocd-app:1.0
+        image: nanajanashia/argocd-app:1.2
         resources:
           limits:
             memory: "128Mi"

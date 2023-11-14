@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: FAPS-deployment
+  name: faps-deployment
 spec:
   selector:
     matchLabels:
-      app: FAPS
+      app: faps
   replicas: 4
   template:
     metadata:
       labels:
-        app: FAPS
+        app: faps
     spec:
       containers:
-      - name: FAPS
+      - name: faps
         image: ghalamif/faps:green
         resources:
           limits:

@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: faps-rollout
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: faps-r
+      app: faps-r
+  template:
+    metadata:
+      labels:
+        app: faps-r
+    spec:
+      containers:
+      - name: faps-r
+        image: ghalamif/faps:green
+        ports:
+        - containerPort: 80
+  strategy:
+    canary: #Indicates that the rollout should use the Canary strategy
+      stableService: faps-stable
+      canaryService: faps-canary
+      steps:
+      - setWeight: 10
+      - pause:
+          duration: 20s # 1 hour
+      - setWeight: 20
+      - pause: {} # pause indefinitely

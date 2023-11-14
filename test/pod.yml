@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment
+  name: imageTest
+replicas: 3
 spec:
   selector:
     matchLabels:
-      app: myapp
-  replicas: 2
+      app: imageTest
   template:
     metadata:
       labels:
-        app: myapp
+        app: imageTest
     spec:
       containers:
-      - name: myapp
-        image: ghalamif/faps:green
+      - name: imageTest
+        image: amigoscode/kubernetes:hello-world-v2
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 8080
+        - containerPort: 80

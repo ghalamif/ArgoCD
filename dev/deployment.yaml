@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: faps
-        image: ghalamif/faps:red
+        image: ghalamif/faps:green
         resources:
           limits:
             memory: "128Mi"

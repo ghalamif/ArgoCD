@@ -4,7 +4,7 @@ metadata:
   name: myapp-service
 spec:
   selector:
-    app: myapp
+    app: FAPS
   ports:
   - port: 8080
     protocol: TCP

@@ -21,8 +21,8 @@ spec:
     automated:
       selfHeal: true
       prune: true
-      autoSync: true
-      syncInterval: 1m
+      #autoSync: true
+      #syncInterval: 1m
 
 
 ---
@@ -49,8 +49,8 @@ spec:
     automated:
       selfHeal: true
       prune: true
-      autoSync: true
-      syncInterval: 1m
+      #autoSync: true
+      #syncInterval: 1m
 
 
 ---
@@ -77,8 +77,8 @@ spec:
     automated:
       selfHeal: true
       prune: true
-      autoSync: true
-      syncInterval: 1m
+      #autoSync: true
+      #syncInterval: 1m
 
 
 ---
@@ -105,8 +105,8 @@ spec:
     automated:
       selfHeal: true
       prune: true
-      autoSync: true
-      syncInterval: 1m
+      #autoSync: true
+      #syncInterval: 1m
 
 
 ---
@@ -133,8 +133,8 @@ spec:
     automated:
       selfHeal: true
       prune: true
-      autoSync: true
-      syncInterval: 1m
+      #autoSync: true
+      #syncInterval: 1m
 
 
 ---

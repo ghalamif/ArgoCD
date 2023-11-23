@@ -5,16 +5,16 @@ Here are 4 deployment strategies implementations offered by the Argo Rollouts:
 ### Rolling Update (Default Strategy)
 A RollingUpdate slowly replaces the old version with the new version. As the new version comes up, the old version is scaled down in order to maintain the overall count of the application.
 
-### Recreate
+### Recreate (Downtime)
 A Recreate deployment deletes the old version of the application before bring up the new version.
 This strategy ensures that **two versions of the application never run at the same time**, but there is **downtime** during the deployment.
 
 ### Blue-Green
-A Blue-Green deployment (sometimes referred to as a Red-Black) has both the new and old version of the application deployed at the same time. During this time, only the old version of the application will receive production traffic. This allows the developers to run tests against the new version before switching the live traffic to the new version.
+A Blue-Green deployment (sometimes referred to as a Red-Black) **has both the new and old version of the application** deployed at the same time. During this time, only the old version of the application will receive production traffic. This allows the developers to run tests against the new version before switching the live traffic to the new version.
 ![picture from https://argoproj.github.io/argo-rollouts/concepts/ ](https://argoproj.github.io/argo-rollouts/concepts-assets/blue-green-deployments.png)
 
 ### Canary 
-A Canary deployment exposes a subset of users to the new version of the application while serving the rest of the traffic to the old version. Once the new version is verified to be correct, the new version can gradually replace the old version. Ingress controllers and service meshes such as NGINX and Istio, enable more sophisticated traffic shaping patterns for canarying than what is natively available (e.g. achieving very fine-grained traffic splitting, or splitting based on HTTP headers).
+A Canary deployment exposes a subset of users to the new version of the application while serving the rest of the traffic to the old version. Once the new version is verified to be correct, the **new version can gradually replace the old version.** Ingress controllers and service meshes such as NGINX and Istio, enable more sophisticated traffic shaping patterns for canarying than what is natively available (e.g. achieving very fine-grained traffic splitting, or splitting based on HTTP headers).
 ![picture from https://argoproj.github.io/argo-rollouts/concepts/ ](https://argoproj.github.io/argo-rollouts/concepts-assets/canary-deployments.png)
 
 ## UI Dashboard

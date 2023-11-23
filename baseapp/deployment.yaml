@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: base-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: base-app
+  template:
+    metadata:
+      labels:
+        app: base-app
+    spec:
+      containers:
+      - name: base-app
+        image: ghalamif/faps:green
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000

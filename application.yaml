@@ -16,8 +16,125 @@ spec:
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
 
     automated:
       selfHeal: true
       prune: true
+      autoSync: true
+      syncInterval: 1m
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: base-app
+  namespace: base-app
+spec:
+  project: pr1
+
+  source:
+    repoURL: https://github.com/ghalamif/faps.git
+    targetRevision: HEAD
+    path: baseapp
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: my-base-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+      autoSync: true
+      syncInterval: 1m
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kustomizeapp-app
+  namespace: kustomizeapp-app
+spec:
+  project: pr2
+
+  source:
+    repoURL: https://github.com/ghalamif/faps.git
+    targetRevision: HEAD
+    path: kustomizeapp
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: my-kustomizeapp-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+      autoSync: true
+      syncInterval: 1m
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-app
+  namespace: helm-app
+spec:
+  project: pr3
+
+  source:
+    repoURL: https://github.com/ghalamif/faps.git
+    targetRevision: HEAD
+    path: helm
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: my-helm-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+      autoSync: true
+      syncInterval: 1m
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argorollout-app
+  namespace: argorollout-app
+spec:
+  project: pr4
+
+  source:
+    repoURL: https://github.com/ghalamif/faps.git
+    targetRevision: HEAD
+    path: argo-rollout
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: my-argorollout-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+      autoSync: true
+      syncInterval: 1m
+
+
+---

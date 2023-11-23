@@ -30,7 +30,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: base-app
-  namespace: base-app
+  namespace: argocd
 spec:
   project: pr1
 
@@ -58,7 +58,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kustomizeapp-app
-  namespace: kustomizeapp-app
+  namespace: argocd
 spec:
   project: pr2
 
@@ -86,7 +86,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: helm-app
-  namespace: helm-app
+  namespace: argocd
 spec:
   project: pr3
 
@@ -114,7 +114,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argorollout-app
-  namespace: argorollout-app
+  namespace: argocd
 spec:
   project: pr4
 
@@ -135,6 +135,4 @@ spec:
       prune: true
       #autoSync: true
       #syncInterval: 1m
-
-
 ---

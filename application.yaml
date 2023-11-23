@@ -32,7 +32,7 @@ metadata:
   name: base-app
   namespace: argocd
 spec:
-  project: pr1
+  project: default
 
   source:
     repoURL: https://github.com/ghalamif/faps.git
@@ -60,7 +60,7 @@ metadata:
   name: kustomizeapp-app
   namespace: argocd
 spec:
-  project: pr2
+  project: default
 
   source:
     repoURL: https://github.com/ghalamif/faps.git
@@ -88,7 +88,7 @@ metadata:
   name: helm-app
   namespace: argocd
 spec:
-  project: pr3
+  project: default
 
   source:
     repoURL: https://github.com/ghalamif/faps.git
@@ -116,7 +116,7 @@ metadata:
   name: argorollout-app
   namespace: argocd
 spec:
-  project: pr4
+  project: default
 
   source:
     repoURL: https://github.com/ghalamif/faps.git

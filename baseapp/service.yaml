@@ -10,4 +10,4 @@ spec:
     - protocol: TCP
       port: 3200
       targetPort: 3000
-      nodePort: 30015
+      nodePort: 30012

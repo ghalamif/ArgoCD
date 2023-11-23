@@ -11,7 +11,7 @@ This strategy ensures that **two versions of the application never run at the sa
 
 ### Blue-Green
 A Blue-Green deployment (sometimes referred to as a Red-Black) has both the new and old version of the application deployed at the same time. During this time, only the old version of the application will receive production traffic. This allows the developers to run tests against the new version before switching the live traffic to the new version.
-![picture from https://argoproj.github.io/argo-rollouts/concepts/ ](https://https://argoproj.github.io/argo-rollouts/concepts-assets/blue-green-deployments.png)
+![picture from https://argoproj.github.io/argo-rollouts/concepts/ ](https://argoproj.github.io/argo-rollouts/concepts-assets/blue-green-deployments.png)
 
 ### Canary 
 A Canary deployment exposes a subset of users to the new version of the application while serving the rest of the traffic to the old version. Once the new version is verified to be correct, the new version can gradually replace the old version. Ingress controllers and service meshes such as NGINX and Istio, enable more sophisticated traffic shaping patterns for canarying than what is natively available (e.g. achieving very fine-grained traffic splitting, or splitting based on HTTP headers).
@@ -78,4 +78,4 @@ In order to **make Rollout** considered Healthy again and not Degraded, it is ne
 
 
 ### Summary
-This Rollout in this example did not utilize an ingress controller or service mesh provider to route traffic. Instead, it used **normal Kubernetes Service networking **(i.e. kube-proxy) to achieve an approximate canary weight, based on the closest ratio of new to old replica counts. As a result, this Rollout had a ** limitation **in that it could only achieve a minimum canary weight of ** 20% **, by scaling 1 of 5 pods to run the new version. **In order to achieve much finer grained canaries, an ingress controller or service mesh is necessary. **
+This Rollout in this example did not utilize an ingress controller or service mesh provider to route traffic. Instead, it used **normal Kubernetes Service networking**(i.e. kube-proxy) to achieve an approximate canary weight, based on the closest ratio of new to old replica counts. As a result, this Rollout had a **limitation** in that it could only achieve a minimum canary weight of **20%** , by scaling 1 of 5 pods to run the new version.**In order to achieve much finer grained canaries, an ingress controller or service mesh is necessary.**

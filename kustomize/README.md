@@ -1,6 +1,9 @@
 # My Awesome Project
-
-This is a brief description of my awesome project. It does amazing things!
+## Build
+```bash
+kubectl apply -k <Dir>
+```
+## Overlays
 
 ## Installation
 

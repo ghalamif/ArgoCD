@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kustomize-deployment
+spec:
+  selector:
+    matchLabels:
+      app: kustomize-app
+  template:
+    metadata:
+      labels:
+        app: kustomize-app
+    spec:
+      replicas: 2
+      containers:
+      - name: kustomize-app
+        image: nginex
+        resources:
+          limits:
+            memory: "12Mi"
+            cpu: "5m"
+        ports:
+        - containerPort: 8080

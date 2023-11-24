@@ -1,23 +1,23 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kustomize-deployment
+  name: nginx-deployment
+  namespace: default
+  labels:
+    app: nginx
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: kustomize-app
+      app: nginx
   template:
     metadata:
       labels:
-        app: kustomize-app
+        app: nginx
     spec:
-      replicas: 2
       containers:
-      - name: kustomize-app
-        image: nginex
-        resources:
-          limits:
-            memory: "12Mi"
-            cpu: "5m"
+      - name: nginx
+        image: nginx:1.14.2
         ports:
-        - containerPort: 8080
+        - containerPort: 80

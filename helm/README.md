@@ -1,11 +1,5 @@
 # My Awesome Project
 
-This is a brief description of my awesome project. It does amazing things!
-
-## Installation
-
-To install, follow these steps...
-
 ## Prerequisites
 
 The following prerequisites are required.
@@ -15,5 +9,18 @@ Markup :
 Installing and configuring Helm.
 * Install Kubernetes or have access to a cluster
 
-You must have Kubernetes installed. For the latest release of Helm, we recommend the latest stable release of Kubernetes, which in most cases is the second-latest minor release.
-You should also have a local configured copy of kubectl.
+## Install Helm
+For more details, or for other options, see the [installation guide](https://helm.sh/docs/intro/install/).
+
+Initialize a Helm Chart Repository
+
+Once you have Helm ready, you can add a chart repository. Check [Artifact Hub](https://artifacthub.io/packages/search?kind=0) for available Helm chart repositories.
+```bash
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+````
+
+NOTICE: Do Not Forget To Update Repo!!!
+```bash
+$ helm repo update  
+````
+``

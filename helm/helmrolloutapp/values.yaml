@@ -1,8 +1,0 @@
-dep:
-  appName: helm-app
-  image: ghalamif/faps:green
-  replicas: 2
-svc:
-  port: 3200
-  targetPort: 80
-

@@ -63,7 +63,9 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: kustomizeapp
+    path: kustomize/base
+    kustomize:
+      version: v3.5.4
   destination: 
     server: https://kubernetes.default.svc
     namespace: my-kustomizeapp-app

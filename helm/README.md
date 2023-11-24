@@ -26,6 +26,7 @@ $ helm repo update
 ## The Chart File Structure
 
 A chart is organized as a collection of files inside of a directory. The directory name is the name of the chart (without versioning information). Thus, a chart describing WordPress would be stored in a wordpress/ directory.
+```bash
 wordpress/
   Chart.yaml          #A YAML file containing information about the chart
   LICENSE             #OPTIONAL: A plain text file containing the license for the chart
@@ -39,6 +40,7 @@ wordpress/
   templates/NOTES.txt #OPTIONAL: A plain text file containing short usage notes
 
 Inside of this directory, Helm will expect a structure that matches this:
+```
 
 ## HOW To
 ## Quote Strings, Don't Quote Integers

@@ -90,7 +90,7 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: helm/helmrolloutapp
+    path: helm/helmrollout
     helm:
       #releaseName: sealed-secrets
       valueFiles:

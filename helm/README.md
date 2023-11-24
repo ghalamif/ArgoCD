@@ -2,8 +2,7 @@
 
 ## Prerequisites
 
-The following prerequisites are required.
-Markup : 
+The following prerequisites are required: 
 * A Kubernetes cluster
 * Deciding what security configurations to apply to your installation, if any
 Installing and configuring Helm.
@@ -15,12 +14,20 @@ For more details, or for other options, see the [installation guide](https://hel
 Initialize a Helm Chart Repository
 
 Once you have Helm ready, you can add a chart repository. Check [Artifact Hub](https://artifacthub.io/packages/search?kind=0) for available Helm chart repositories.
-```bash
+´´´bash
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
-````
+´´´
 
 NOTICE: Do Not Forget To Update Repo!!!
-```bash
+
+´´´bash
 $ helm repo update  
-````
-``
+´´´
+
+
+## HOW To
+## Quote Strings, Don't Quote Integers
+When you are working with string data, you are always safer quoting the strings than leaving them as bare words:
+´´´helm
+name: {{ .Values.MyName | quote }}
+´´´

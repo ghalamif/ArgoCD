@@ -6,6 +6,10 @@ svc:
   port: 3200
   targetPort: 80
 
+  canary:
+    rolloutName: canaryRoll
+    replicas: 3
+
 
 
     

@@ -65,7 +65,14 @@ spec:
     targetRevision: HEAD
     path: kustomize/base
     kustomize:
-      version: v3.5.4
+      patches:
+        - target:
+            kind: Deployment
+            name: guestbook-ui
+          patch: |-
+            - op: replace
+              path: /spec/template/spec/containers/0/ports/0/containerPort
+              value: 443
   destination: 
     server: https://kubernetes.default.svc
     namespace: my-kustomizeapp-app

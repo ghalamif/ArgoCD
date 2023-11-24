@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Rollout
+metadata:
+  name: recreate-Rollout
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: recreate-Rollout-pod
+      version: "1.0"
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: recreate-Rollout-pod
+    spec:
+      containers:
+      - name: recreate-Rollout-pod
+        image: argoproj/rollouts-demo:yellow
+        ports:
+        - containerPort: 8086

@@ -17,12 +17,16 @@ This strategy ensures that **two versions of the application never run at the sa
 A Blue-Green deployment (sometimes referred to as a Red-Black) **has both the new and old version of the application** deployed at the same time. During this time, only the old version of the application will receive production traffic. This allows the developers to run tests against the new version before switching the live traffic to the new version.
 
 **Suitability for ML:** Blue-Green deployment can be beneficial for ML pipelines when you want to ensure a seamless transition between model versions. You can train and deploy a new model in the "green" environment, test it thoroughly, and then switch traffic to the new model without downtime.
+
+
 ![picture from https://argoproj.github.io/argo-rollouts/concepts/ ](https://argoproj.github.io/argo-rollouts/concepts-assets/blue-green-deployments.png)
 
 ### Canary 
 A Canary deployment exposes a subset of users to the new version of the application while serving the rest of the traffic to the old version. Once the new version is verified to be correct, the **new version can gradually replace the old version.** Ingress controllers and service meshes such as NGINX and Istio, enable more sophisticated traffic shaping patterns for canarying than what is natively available (e.g. achieving very fine-grained traffic splitting, or splitting based on HTTP headers).
 
 **Suitability for ML:** Canary deployment is suitable for ML pipelines when you want to release a new model to a small subset of users first. It helps you observe the model's behavior in a real-world environment and gather feedback before deploying it more widely.
+
+
 ![picture from https://argoproj.github.io/argo-rollouts/concepts/ ](https://argoproj.github.io/argo-rollouts/concepts-assets/canary-deployments.png)
 
 ## UI Dashboard

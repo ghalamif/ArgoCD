@@ -4,8 +4,8 @@ metadata:
   name: base-helm-app-service
 spec:
   selector:
-    app: {{ .values.base.dep.appName}}
+    app: {{ .values.dep.appName}}
   ports:
-    - port: {{.values.base.svc.port}}
-      targetPort: {{.values.base.svc.targetPort}}
+    - port: {{.values.svc.port}}
+      targetPort: {{.values.svc.targetPort}}
 

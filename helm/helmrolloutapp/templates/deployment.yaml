@@ -3,18 +3,18 @@ kind: Deployment
 metadata:
   name: base-helm-app-deployment
 spec:
-  replicas: {{.values.base.dep.replicas}}
+  replicas: {{.values.dep.replicas}}
   selector:
     matchLabels:
-      app: {{.values.base.dep.appName}}
+      app: {{.values.dep.appName}}
   template:
     metadata:
       labels:
-        app: {{.values.base.dep.appName}}
+        app: {{.values.dep.appName}}
     spec:
       containers:
-      - name: {{.values.base.dep.appName}}
-        image: {{.values.base.dep.image}}
+      - name: {{.values.dep.appName}}
+        image: {{.values.dep.image}}
         resources:
           limits:
             memory: "26Mi"

@@ -90,7 +90,11 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: helm
+    path: helm/helmrolloutapp
+    helm:
+      #releaseName: sealed-secrets
+      valueFiles:
+      - values.yaml
   destination: 
     server: https://kubernetes.default.svc
     namespace: my-helm-app

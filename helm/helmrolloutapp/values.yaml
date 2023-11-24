@@ -1,7 +1,7 @@
 base:
   dep:
-    appName: helm-app
-    imsge: ghalamif/faps:green
+    appName: "helm-app"
+    imsge: "ghalamif/faps:green"
     replicas: 2
   svc:
       port: 3200

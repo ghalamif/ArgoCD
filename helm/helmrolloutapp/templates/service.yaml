@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: base-helm-app-service
 spec:
-  #type: {{.value.base.svc.type | quote}}
   selector:
     app: {{.value.base.dep.appName | quote}}
   ports:
     - port: {{.value.base.svc.port}}
       targetPort: {{.value.base.svc.targetPort}}
-      #nodePort: {{.value.base.svc.nodePort}}
+

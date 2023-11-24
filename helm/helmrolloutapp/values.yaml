@@ -4,7 +4,6 @@ base:
     imsge: ghalamif/faps:green
     replicas: 2
   svc:
-      type: LoadBalancer
       port: 3200
       targetPort: 80
-      nodePort: 30021
+

@@ -94,7 +94,7 @@ spec:
     helm:
       #releaseName: sealed-secrets
       valueFiles:
-      - values.yaml
+        - values.yaml
   destination: 
     server: https://kubernetes.default.svc
     namespace: my-helm-app

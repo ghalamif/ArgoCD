@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: base-helm-app-deployment
+spec:
+  replicas: {{.value.base.dep.replicas}}
+  selector:
+    matchLabels:
+      app: {{.value.base.dep.appName  | quote}}
+  template:
+    metadata:
+      labels:
+        app: {{.value.base.dep.appName  | quote}}
+    spec:
+      containers:
+      - name: {{.value.base.dep.appName | quote}}
+        image: {{.value.base.dep.image | quote}}
+        resources:
+          limits:
+            memory: "26Mi"
+            cpu: "5m"
+        ports:
+        - containerPort: 80
+

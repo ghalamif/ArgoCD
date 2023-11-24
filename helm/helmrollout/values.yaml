@@ -7,7 +7,5 @@ svc:
   targetPort: 80
 
 
-  canary:
-    rolloutName: rollouts-demo2
-    replicas: 2
+
     

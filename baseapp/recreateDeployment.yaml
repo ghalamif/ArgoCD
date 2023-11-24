@@ -7,7 +7,6 @@ spec:
   selector:
     matchLabels:
       app: recreate-Rollout-pod
-      version: "1.0"
   strategy:
     type: Recreate
   template:
@@ -16,7 +15,13 @@ spec:
         app: recreate-Rollout-pod
     spec:
       containers:
-      - name: recreate-Rollout-pod
+      - name: rollouts-demo
         image: argoproj/rollouts-demo:yellow
         ports:
-        - containerPort: 8086
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 32Mi
+            cpu: 5m

@@ -78,9 +78,13 @@ annotations:
   example: A list of annotations keyed by name (optional).
 ```
 ## Declarative
+First of all you have to create a HELM project by this command:
+
+`helm create helmrollout`
 
 You can install Helm charts through the UI, or in the declarative GitOps way.
 Helm is only used to inflate charts with helm template. The lifecycle of the application is handled by Argo CD instead of Helm. Here is an example:
+
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -98,6 +102,30 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kubeseal
+
+
+## OR
+
+
+    source:
+    repoURL: https://github.com/ghalamif/faps.git
+    targetRevision: HEAD
+    path: helm/helmrollout
+    helm:
+      #releaseName: sealed-secrets
+      valueFiles:
+        - values.yaml
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: my-helm-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
 ```
 ## Values Files¶
 

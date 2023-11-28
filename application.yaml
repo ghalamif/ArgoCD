@@ -147,11 +147,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   annotations: 
     argocd-image-updater.argoproj.io/image-list: ghalamif/faps
-    #argocd-image-updater.argoproj.io/<image>.update-strategy: semver
-    #argocd-image-updater.argoproj.io/<alias>.update-strategy: latest
-    #argocd-image-updater.argoproj.io/myimage.allow-tags: regexp:^[0-9a-f]{7}$
-    #argocd-image-updater.argoproj.io/<alias>.update-strategy: name
-    #argocd-image-updater.argoproj.io/<alias>.update-strategy: alphabetical
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
     argocd-image-updater.argoproj.io/git-branch: main
 spec:
@@ -160,7 +155,7 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: argo-image-updater
+    path: imageupdater
   destination: 
     server: https://kubernetes.default.svc
     namespace: argo-image-updater

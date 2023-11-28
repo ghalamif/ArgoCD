@@ -134,8 +134,6 @@ spec:
       selfHeal: true
       prune: true
       
----
-
 
 ---
 apiVersion: argoproj.io/v1alpha1

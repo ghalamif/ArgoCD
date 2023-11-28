@@ -5,3 +5,7 @@ metadata:
   name: arbitrary
 resources:
 - deployment.yaml
+
+
+namePrefix: v1-
+nameSuffix: -fau

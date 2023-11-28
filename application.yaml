@@ -64,15 +64,6 @@ spec:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
     path: kustomize/base
-    kustomize:
-      patches:
-        - target:
-            kind: Deployment
-            name: guestbook-ui
-          patch: |-
-            - op: replace
-              path: /spec/template/spec/containers/0/ports/0/containerPort
-              value: 443
   destination: 
     server: https://kubernetes.default.svc
     namespace: my-kustomizeapp-app
@@ -134,6 +125,45 @@ spec:
   destination: 
     server: https://kubernetes.default.svc
     namespace: my-argorollout-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+      
+---
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-image-updater-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations: 
+    argocd-image-updater.argoproj.io/image-list: ghalamif/faps
+    #argocd-image-updater.argoproj.io/<image>.update-strategy: semver
+    #argocd-image-updater.argoproj.io/<alias>.update-strategy: latest
+    #argocd-image-updater.argoproj.io/myimage.allow-tags: regexp:^[0-9a-f]{7}$
+    #argocd-image-updater.argoproj.io/<alias>.update-strategy: name
+    #argocd-image-updater.argoproj.io/<alias>.update-strategy: alphabetical
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+    argocd-image-updater.argoproj.io/git-branch: main
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/ghalamif/faps.git
+    targetRevision: HEAD
+    path: argo-image-updater
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: argo-image-updater
 
   syncPolicy:
     syncOptions:

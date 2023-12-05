@@ -18,7 +18,7 @@ spec:
           - "-H"
           - "Content-type: application/json"
           - "--data"
-          - '{"text":"succeeded!"}' 
+          - '{"text":"Hello, World!"}'
           - "https://hooks.slack.com/services/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"
       restartPolicy: Never
   backoffLimit: 2

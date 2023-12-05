@@ -179,7 +179,7 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: argo-hooks-app
+    path: argo-hooks
   destination: 
     server: https://kubernetes.default.svc
     namespace: my-argo-hooks-app

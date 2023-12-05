@@ -13,6 +13,6 @@ spec:
         image: ghalamif/faps:green
         command: ["sh", "-c"]
         args:
-          - 'curl -X POST -H "Content-type: application/json" --data "{"text":"xxxxx, World!"}" https://hooks.slack.com/services/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'
+          - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"xxx, World!\"}" https://hooks.slack.com/services/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'
       restartPolicy: Never
   backoffLimit: 2

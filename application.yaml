@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapp-argo-application
+  name: basic-app
   namespace: argocd
 spec:
   project: default
@@ -9,10 +9,10 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: dev
+    path: basic-app
   destination: 
     server: https://kubernetes.default.svc
-    namespace: myapp
+    namespace: basic-app
 
   syncPolicy:
     syncOptions:
@@ -21,14 +21,12 @@ spec:
     automated:
       selfHeal: true
       prune: true
-
-
 
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: base-app
+  name: argo-rollout-app
   namespace: argocd
 spec:
   project: default
@@ -36,10 +34,10 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: baseapp
+    path: argo-rollout
   destination: 
     server: https://kubernetes.default.svc
-    namespace: my-base-app
+    namespace: argo-rollout-app
 
   syncPolicy:
     syncOptions:
@@ -48,14 +46,12 @@ spec:
     automated:
       selfHeal: true
       prune: true
-
-
 
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kustomizeapp-app
+  name: kustomize-app
   namespace: argocd
 spec:
   project: default
@@ -63,10 +59,10 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: kustomize/base
+    path: kustomize-app/base
   destination: 
     server: https://kubernetes.default.svc
-    namespace: my-kustomizeapp-app
+    namespace: my-kustomize-app
 
   syncPolicy:
     syncOptions:
@@ -75,8 +71,6 @@ spec:
     automated:
       selfHeal: true
       prune: true
-
-
 
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -90,7 +84,7 @@ spec:
   source:
     repoURL: https://github.com/ghalamif/faps.git
     targetRevision: HEAD
-    path: helm/helmrollout
+    path: helm-app/helmrollout
     helm:
       #releaseName: sealed-secrets
       valueFiles:
@@ -106,66 +100,6 @@ spec:
     automated:
       selfHeal: true
       prune: true
-
-
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: argorollout-app
-  namespace: argocd
-spec:
-  project: default
-
-  source:
-    repoURL: https://github.com/ghalamif/faps.git
-    targetRevision: HEAD
-    path: argo-rollout
-  destination: 
-    server: https://kubernetes.default.svc
-    namespace: my-argorollout-app
-
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-
-    automated:
-      selfHeal: true
-      prune: true
-      
-
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: argo-image-updater-app
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-  annotations: 
-    argocd-image-updater.argoproj.io/image-list: ghalamif/faps:~1.0.0
-    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
-    argocd-image-updater.argoproj.io/git-branch: main
-spec:
-  project: default
-
-  source:
-    repoURL: https://github.com/ghalamif/faps.git
-    targetRevision: HEAD
-    path: imageupdater
-  destination: 
-    server: https://kubernetes.default.svc
-    namespace: argo-image-updater
-
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-
-    automated:
-      selfHeal: true
-      prune: true
-      
 
 ---
 apiVersion: argoproj.io/v1alpha1

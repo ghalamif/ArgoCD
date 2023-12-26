@@ -17,7 +17,7 @@ spec:
         image: ghalamif/faps:green
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "12Mi"
+            cpu: "5m"
         ports:
         - containerPort: 80

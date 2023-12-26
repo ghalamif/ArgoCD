@@ -23,3 +23,13 @@ Also available in Mac, Linux and WSL Homebrew:
 brew install argocd
 ```
 
+### 3. Port Forwarding
+
+Kubectl port-forwarding can be used to connect to the API server without exposing the service.
+
+```bash
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+The API server can then be accessed using https://localhost:8080
+```
+
+

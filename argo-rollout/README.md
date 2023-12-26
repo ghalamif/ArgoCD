@@ -1,3 +1,18 @@
+# ArgoCD Rollout
+## Installation
+
+### Requirements
+
+Kubernetes cluster with argo-rollouts controller installed (see [install guide](https://argoproj.github.io/argo-rollouts/installation/#controller-installation))
+kubectl with argo-rollouts plugin installed (see [install guide](https://argoproj.github.io/argo-rollouts/installation/#kubectl-plugin-installation))
+
+### Quick Start
+```bash
+kubectl create namespace argo-rollouts
+kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
+```
+Follow the full getting started guide to walk through creating and then updating a rollout object.
+
 ## Deployment Strategies
 
 Here are 4 deployment strategies implementations offered by the Argo Rollouts:
@@ -91,3 +106,6 @@ In order to **make Rollout** considered Healthy again and not Degraded, it is ne
 
 ### Summary
 This Rollout in this example did not utilize an ingress controller or service mesh provider to route traffic. Instead, it used **normal Kubernetes Service networking**(i.e. kube-proxy) to achieve an approximate canary weight, based on the closest ratio of new to old replica counts. As a result, this Rollout had a **limitation** in that it could only achieve a minimum canary weight of **20%** , by scaling 1 of 5 pods to run the new version.**In order to achieve much finer grained canaries, an ingress controller or service mesh is necessary.**
+
+## Best Practice
+You can visit [here](https://github.com/argoproj/argo-rollouts/blob/master/examples/rollout-bluegreen.yaml) to see officially Best Practices from ArgoCD

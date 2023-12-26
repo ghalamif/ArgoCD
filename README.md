@@ -1,9 +1,7 @@
 # How To Install ArgoCD
 ## Requirements
-
 Installed kubectl command-line tool.
 Have a kubeconfig file (default location is ~/.kube/config).
-CoreDNS. Can be enabled for microk8s by microk8s enable dns && microk8s stop && microk8s start
 ### 1. Install Argo CD¶
 
 ```bash
@@ -29,7 +27,7 @@ Kubectl port-forwarding can be used to connect to the API server without exposin
 
 ```bash
 kubectl port-forward svc/argocd-server -n argocd 8080:443
-The API server can then be accessed using https://localhost:8080
 ```
+The API server can then be accessed using https://localhost:8080
 
 

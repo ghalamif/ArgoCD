@@ -2,7 +2,7 @@
 ## Requirements
 Installed kubectl command-line tool.
 Have a kubeconfig file (default location is ~/.kube/config).
-### 1. Install Argo CD¶
+### 1. Install Argo CD
 
 ```bash
 kubectl create namespace argocd

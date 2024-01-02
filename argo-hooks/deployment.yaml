@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: argo-hooks
-        image: ghalamif/faps:green
+        image: nginx:1.23.4
         resources:
           limits:
             memory: "26Mi"

@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: slack-notification
-        image: ghalamif/faps:green
+        image: nginx:1.23.4
         command:
           - "sh"
           - "-c"

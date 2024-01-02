@@ -1,6 +1,6 @@
 dep:
   appName: helm-app
-  image: ghalamif/faps:green
+  image: ghalamif/imagefaps:0.1.0
   replicas: 3
 svc:
   port: 3200

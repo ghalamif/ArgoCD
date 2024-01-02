@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: ghalamif/imagefaps:0.1.0
+        image: ghalamif/imagefaps:0.1.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

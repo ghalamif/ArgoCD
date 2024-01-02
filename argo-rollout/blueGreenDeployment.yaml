@@ -4,7 +4,7 @@ metadata:
   name: rollout-bluegreen
 spec:
   replicas: 2
-  revisionHistoryLimit: 8
+  revisionHistoryLimit: 20
   selector:
     matchLabels:
       app: rollout-bluegreen

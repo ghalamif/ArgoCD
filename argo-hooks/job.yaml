@@ -16,7 +16,7 @@ spec:
           - name: TOKEN
             valueFrom:
               secretKeyRef:
-                name: secrets  # The name of the Secret created by the SealedSecret
+                name: secretss  # The name of the Secret created by the SealedSecret
                 key: token
         command:
           - "sh"
@@ -24,7 +24,7 @@ spec:
           - |
             echo $TOKEN
             curl -X POST \
-            -H 'Authorization: Bearer xoxb-249860731473-6311577973088-EKvFm7pRv7Kto6mQTlyCtoQj' \
+            -H 'Authorization: Bearer $TOKEN' \
             -H 'Content-Type: application/json; charset=utf-8' \
             --data '{"channel":"#faps-channel","text":"it is synched"}' \
             https://slack.com/api/chat.postMessage

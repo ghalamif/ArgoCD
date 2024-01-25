@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   generateName: app-slack-notification-
+  namespace: my-argo-hooks-app
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -11,9 +12,20 @@ spec:
       containers:
       - name: slack-notification
         image: nginx:1.23.4
+        env:
+          - name: TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: mysecret  # The name of the Secret created by the SealedSecret
+                key: token
         command:
           - "sh"
           - "-c"
-          - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"ArgoCD PostSync Hook Succeeded!\"}" https://hooks.slack.com/services/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'
+          - |
+            curl -X POST \
+            -H 'Authorization: Bearer $TOKEN' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data '{"channel":"#faps-channel","text":"it is synched"}' \
+            https://slack.com/api/chat.postMessage
       restartPolicy: Never
   backoffLimit: 2

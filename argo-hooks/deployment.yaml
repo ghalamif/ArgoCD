@@ -16,16 +16,11 @@ spec:
       - name: argo-hooks
         image: nginx:1.23.4
         env:
-          - name: S_W_TOKEN
+          - name: TOKEN
             valueFrom:
               secretKeyRef:
-                name: slack-notification-secret  # The name of the Secret created by the SealedSecret
-                key: webhook-token   
-          - name: S_TOKEN
-            valueFrom:
-              secretKeyRef:
-                name: slack-notification-secret  # The name of the Secret created by the SealedSecret
-                key: token         
+                name: mysecret  # The name of the Secret created by the SealedSecret
+                key: token        
         resources:
           limits:
             memory: "26Mi"

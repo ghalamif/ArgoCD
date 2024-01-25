@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: slack-notification
-        image: curlimages/curl:8.5.0
+        image: nginx
         env:
           - name: TOKEN
             valueFrom:

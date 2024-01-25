@@ -16,7 +16,7 @@ spec:
           - name: TOKEN
             valueFrom:
               secretKeyRef:
-                name: mysecret  # The name of the Secret created by the SealedSecret
+                name: secrets  # The name of the Secret created by the SealedSecret
                 key: token
         command:
           - "sh"

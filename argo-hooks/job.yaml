@@ -14,6 +14,6 @@ spec:
         command:
           - "sh"
           - "-c"
-          - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"ArgoCD PostSync Hook Succeeded!\"}" https://hooks.slack.com/services/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'
+          - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"ArgoCD PostSync Hook Succeeded!\"}" https://hooks.slack.com/services/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'
       restartPolicy: Never
   backoffLimit: 2

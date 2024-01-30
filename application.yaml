@@ -126,3 +126,133 @@ spec:
       selfHeal: true
       prune: true
 
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pr-argo-hooks
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/ghalamif/prfaps.git
+    targetRevision: HEAD
+    path: web-hook
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: my-pr-argo-hooks-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pr-cascade-del-app
+  namespace: argocd
+  finalizers: 
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/ghalamif/prfaps.git
+    targetRevision: HEAD
+    path: cascade-deletion
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: pr-cascade-del-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wave-app
+  namespace: argocd
+  finalizers: 
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ghalamif/prfaps.git
+    targetRevision: HEAD
+    path: wave
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: wave-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-image-updater2-app
+  namespace: argocd
+  finalizers: 
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/image-list: backend=ghalamif/imagefaps
+    #argocd-image-updater.argoproj.io/backend.update-strategy: latest
+    #argocd-image-updater.argoproj.io/backend.helm.image-name: backend.image.repository
+    #argocd-image-updater.argoproj.io/backend.helm.image-tag: backend.image.tag
+    argocd-image-updater.argoproj.io/backend.helm.image-spec: image.name
+
+    #argocd-image-updater.argoproj.io/myimg.force-update: "true"
+    #argocd-image-updater.argoproj.io/<image_name>.update-strategy: latest
+    #argocd-image-updater.argoproj.io/myimg.update-strategy: semver
+    #argocd-image-updater.argoproj.io/<image_name>.allow-tags: <match_func>
+    #argocd-image-updater.argoproj.io/<image_name>.ignore-tags: <pattern1>[, <pattern2>, ...]
+    #argocd-image-updater.argoproj.io/<image_alias>.platforms: linux/arm64,linux/amd64
+    #argocd-image-updater.argoproj.io/write-back-method: git :secret:argocd/repo-787549733
+    #argocd-image-updater.argoproj.io/img.pull-secret: secret:argocd/dockerhub-secret
+    argocd-image-updater.argoproj.io/git-branch: main
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ghalamif/prfaps.git
+    targetRevision: HEAD
+    path: argo-image-updater/image-updater
+    helm: 
+      valueFiles:
+        - values.yaml
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: argo-image-updater2-app
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - Validate=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+
+    automated:
+      selfHeal: true
+      prune: true
+      allowEmpty: false
+      
+      
+

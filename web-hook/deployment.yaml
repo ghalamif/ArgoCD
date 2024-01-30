@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pr-argo-hooks-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pr-argo-hooks
+  template:
+    metadata:
+      labels:
+        app: pr-argo-hooks
+    spec:
+      containers:
+      - name: pr-argo-hooks
+        image: nginx:1.23.4
+        resources:
+          limits:
+            memory: "26Mi"
+            cpu: "5m"
+        ports:
+        - containerPort: 80

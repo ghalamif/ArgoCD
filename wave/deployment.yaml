@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wave-db-deployment
+  annotations:
+    #argocd.argoproj.io/hook: PostSync
+    #argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-wave: "-5"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wave-db
+  template:
+    metadata:
+      labels:
+        app: wave-db
+    spec:
+      containers:
+      - name: wave-db
+        image: nginx:1.23.4
+        #restartPolicy: Never 
+        backoffLimit: 20
+        resources:
+          limits:
+            memory: "12Mi"
+            cpu: "5m"
+        ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wave-backend-deployment
+  annotations:
+    #argocd.argoproj.io/hook: PostSync
+    #argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wave-backend
+  template:
+    metadata:
+      labels:
+        app: wave-backend
+    spec:
+      containers:
+      - name: wave-backend
+        image: nginx:1.23.4
+        #restartPolicy: Never
+        backoffLimit: 20
+        resources:
+          limits:
+            memory: "12Mi"
+            cpu: "5m"
+        ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wave-frontend-deployment
+  annotations:
+    #argocd.argoproj.io/hook: PostSync
+    #argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wave-frontend
+  template:
+    metadata:
+      labels:
+        app: wave-frontend
+    spec:
+      containers:
+      - name: wave-frontend
+        image: nginx:1.23.4
+        #restartPolicy: Never
+        backoffLimit: 20
+        resources:
+          limits:
+            memory: "12Mi"
+            cpu: "5m"
+        ports:
+            - containerPort: 80
+
+
+

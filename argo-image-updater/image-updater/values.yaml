@@ -1,0 +1,18 @@
+dep:
+  appName: argo-image-updater-app
+  image: ghalamif/imagefaps:2.0.1
+  replicas: 1
+svc:
+  port: 3200
+  targetPort: 80
+image: 
+  name: ghalamif/imagefaps:2.0.1
+  repository: ghalamif/imagefaps
+  tag: 2.0.1
+  pullPolicy: IfNotPresent
+
+
+
+
+
+    

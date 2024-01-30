@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pr-cascade-del-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pr-cascade-del
+  template:
+    metadata:
+      labels:
+        app: pr-cascade-del
+    spec:
+      containers:
+      - name: pr-cascade-del
+        image: nginx:1.23.4
+        resources:
+          limits:
+            memory: "26Mi"
+            cpu: "5m"
+        ports:
+        - containerPort: 80

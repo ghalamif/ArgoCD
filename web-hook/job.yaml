@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: app-slack-notification-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: slack-notification
+        image: nginx:1.23.4
+        command:
+          - "sh"
+          - "-c"
+          #- 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"ArgoCD PostSync Hook Succeeded!\"}" https://hooks.slack.com/services/$TOKEN'
+          - echo "ArgoCD PostSync Hook Succeeded!"
+      restartPolicy: Never
+  backoffLimit: 2
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: app-slack-notification-fail-
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: slack-notification
+        image: curlimages/curl
+        command:
+          - "sh"
+          - "-c"
+          - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"ArgoCD sync failed!\"}" https://hooks.slack.com/services/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'
+      restartPolicy: Never
+  backoffLimit: 2

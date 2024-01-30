@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-updater-deployment
+
+    
+spec:
+  replicas: {{ .Values.dep.replicas }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: {{ .Values.dep.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.dep.appName }}
+    spec:
+      containers:
+        - name: {{ .Values.dep.appName }}
+          image: {{ .Values.image.name }} #"{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          resources:
+            limits:
+              memory: "26Mi"
+              cpu: "5m"
+          ports:
+            - containerPort: 80

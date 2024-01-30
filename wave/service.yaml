@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wave-backend-service
+spec:
+  selector:
+    app: wave-backend
+  ports:
+    - port: 3200
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wave-frontend-service
+spec:
+  selector:
+    app: wave-frontend
+  ports:
+    - port: 3200
+      targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wave-db-service
+spec:
+  selector:
+    app: wave-db
+  ports:
+    - port: 3200
+      targetPort: 80

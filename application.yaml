@@ -226,7 +226,6 @@ metadata:
     #argocd-image-updater.argoproj.io/<image_name>.allow-tags: <match_func>
     #argocd-image-updater.argoproj.io/<image_name>.ignore-tags: <pattern1>[, <pattern2>, ...]
     #argocd-image-updater.argoproj.io/<image_alias>.platforms: linux/arm64,linux/amd64
-    #argocd-image-updater.argoproj.io/write-back-method: git :secret:argocd/repo-787549733
     #argocd-image-updater.argoproj.io/img.pull-secret: secret:argocd/dockerhub-secret
     argocd-image-updater.argoproj.io/git-branch: main
 spec:

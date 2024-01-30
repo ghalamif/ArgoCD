@@ -36,6 +36,6 @@ spec:
         command:
           - "sh"
           - "-c"
-          - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"ArgoCD sync failed!\"}" https://hooks.slack.com/services/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'
+          - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"ArgoCD sync failed!\"}" https://hooks.slack.com/services/$TOKEN'
       restartPolicy: Never
   backoffLimit: 2

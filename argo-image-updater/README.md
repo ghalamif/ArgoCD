@@ -6,7 +6,7 @@ content source: argocd image updater [Github](https://github.com/argoproj-labs/a
 
 Argo CD Image Updater is a tool to automatically update the container images of Kubernetes workloads which are managed by Argo CD. In a nutshell, it will track image versions specified by annotations on the Argo CD Application resources and update them by setting parameter overrides using the Argo CD API.
 
-Currently it will only work with applications that are built using Kustomize or Helm tooling. Applications built from plain YAML or custom tools are not supported yet (and maybe never will).
+Currently, it will only work with applications that are built using Kustomize or Helm tooling. Applications built from plain YAML or custom tools are not supported yet (and maybe never will).
 
 # Update strategies
 
@@ -37,7 +37,7 @@ The following update strategies are currently supported:
 ## Overview
 
 Argo CD Image Updater supports several methods to propagate new versions of the
-images to Argo CD. These methods are also referred to as *write back methods*.
+images to Argo CD. These methods are also referred to as *write-back methods*.
 
 Currently, the following methods are supported:
 
@@ -133,7 +133,7 @@ In this case, `image_name` should be the name of the image that you want to
 update to, rather than the currently running image.
 
 To provide the original image name, you need to set the `kustomize.image-name`
-annotation to the original image's name, like follows:
+annotation to the original image's name, as follows:
 
 ```yaml
 argocd-image-updater.argoproj.io/<image_alias>.kustomize.image-name: <original_image_name>
@@ -183,7 +183,7 @@ argocd-image-updater.argoproj.io/dex.helm.image-tag: dex.image.tag
 
 ```
 
-The general syntax for the two Helm specific annotations is:
+The general syntax for the two Helm-specific annotations is:
 
 ```yaml
 argocd-image-updater.argoproj.io/<image_alias>.helm.image-name: <name of helm parameter to set for the image name>
@@ -194,7 +194,7 @@ If the chart uses a parameter for the canonical name of the image (i.e. image
 name and tag combined), a third option can be used:
 
 ```yaml
-argocd-image-updater.argoproj.io/<image_alias>.helm.image-spec: <name of helm parameter to set for canonical name of image>
+argocd-image-updater.argoproj.io/<image_alias>.helm.image-spec: <name of helm parameter to set for the canonical name of image>
 ```
 
 If the `<image_alias>.helm.image-spec` annotation is set, the two other

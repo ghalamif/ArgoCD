@@ -41,7 +41,7 @@ A Canary deployment exposes a subset of users to the new version of the applicat
 **Suitability for ML:** Canary deployment is suitable for ML pipelines when you want to release a new model to a small subset of users first. It helps you observe the model's behavior in a real-world environment and gather feedback before deploying it more widely.
 
 
-![picture from https://argoproj.github.io/argo-rollouts/concepts/ ](https://argoproj.github.io/argo-rollouts/concepts-assets/canary-deployments.png)
+
 ![Blank diagram-2](https://github.com/ghalamif/ArgoCD/assets/9778511/10fb3357-56aa-4b66-ac84-b760a054e8fa)
 
 ## UI Dashboard

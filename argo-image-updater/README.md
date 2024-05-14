@@ -1,7 +1,7 @@
 content source: argocd image updater [Github](https://github.com/argoproj-labs/argocd-image-updater/tree/master/docs) page
 # Argo Image Updater
-![image](https://raw.githubusercontent.com/jeromedecoster/argocd-image-updater/master/architecture.svg)
-[image source](https://github.com/jeromedecoster/argocd-image-updater)
+[Blank document-4.pdf](https://github.com/ghalamif/ArgoCD/files/15302713/Blank.document-4.pdf)
+
 ## Introduction
 
 Argo CD Image Updater is a tool to automatically update the container images of Kubernetes workloads which are managed by Argo CD. In a nutshell, it will track image versions specified by annotations on the Argo CD Application resources and update them by setting parameter overrides using the Argo CD API.

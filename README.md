@@ -1,4 +1,4 @@
-As part of my master project at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), I have worked on an AI application deployment platform leveraging GitOps principles and Kubernetes orchestration using ArgoCD. This project, categorized under the Application pillar, focused on automating, monitoring, and optimizing the deployment lifecycle for machine learning models and containerized AI workloads.
+As part of my master’s project at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), I developed a platform for deploying AI applications using GitOps principles and Kubernetes orchestration with ArgoCD. This project, aligned with the Application pillar, aimed to automate, monitor, and optimize the deployment lifecycle of machine learning models and containerized AI workloads. I would also like to thank [Benedikt](https://github.com/bensch98) for his supervision and support throughout the project.
 
 **Key achievements:**
 - Implemented robust CI/CD pipelines for AI/ML models using ArgoCD, enabling declarative, version-controlled, and auditable deployments.

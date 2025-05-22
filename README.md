@@ -1,4 +1,19 @@
-As part of my master’s project at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), I developed a platform for deploying AI applications using GitOps principles and Kubernetes orchestration with ArgoCD. This project, aligned with the Application pillar, aimed to automate, monitor, and optimize the deployment lifecycle of machine learning models and containerized AI workloads. I would also like to thank [Benedikt](https://github.com/bensch98) for his supervision and support throughout the project.
+🚀 Enhancing MLOps with GitOps: Integrating ArgoCD for Efficient CI/CD in Kubernetes
+
+As part of my master's project at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), I developed an advanced AI application deployment platform leveraging GitOps principles and Kubernetes orchestration using ArgoCD. This project, categorized under the Application pillar, aimed to streamline and optimize the lifecycle of machine learning model deployment.
+
+By integrating Continuous Integration, Continuous Deployment (CI/CD), and Continuous Training (CT), the system addressed the complex requirements of maintaining up-to-date ML models and containerized AI workloads in dynamic environments.
+
+🔧 Key areas of focus:
+
+Automating deployment workflows with GitOps and ArgoCD
+Managing Kubernetes clusters with Argo Rollouts and ArgoCD Image Updater
+Improving reliability, scalability, and maintainability of AI systems
+Special thanks to Benedikt for his invaluable supervision and support throughout this project!
+
+#MLOps #GitOps #Kubernetes #ArgoCD #CI_CD #MachineLearning #DevOps #FAU #AI #MasterThesis #Automation #CloudNative
+
+ I would also like to thank [Benedikt](https://github.com/bensch98) for his supervision and support throughout the project.
 
 **Key achievements:**
 - Implemented robust CI/CD pipelines for AI/ML models using ArgoCD, enabling declarative, version-controlled, and auditable deployments.

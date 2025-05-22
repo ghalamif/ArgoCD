@@ -1,3 +1,15 @@
+As part of my master project at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), I have worked on an AI application deployment platform leveraging GitOps principles and Kubernetes orchestration using ArgoCD. This project, categorized under the Application pillar, focused on automating, monitoring, and optimizing the deployment lifecycle for machine learning models and containerized AI workloads.
+
+Key achievements:
+- Implemented robust CI/CD pipelines for AI/ML models using ArgoCD, enabling declarative, version-controlled, and auditable deployments.
+- Integrated Argo Image Updater to automate container image updates, ensuring that the latest model versions and dependencies are safely rolled out across environments.
+- Designed and documented multiple deployment strategies (Rolling, Recreate, Blue-Green, Canary) specifically tailored for machine learning pipelines, supporting stateful components and seamless model version transitions.
+- Developed custom scripts and operational workflows to streamline application management, monitoring, and recovery, facilitating reliable AI service delivery.
+- Emphasized best practices in application delivery, including automated rollback, health monitoring, and secure multi-cluster management for scalable AI workloads.
+
+This experience strengthened my expertise in cloud-native AI operations, DevOps for ML, and end-to-end application delivery for impactful, real-world AI solutions.
+
+
 # ArgoCD
 
 ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. This project allows users to manage application deployments and configurations in a Kubernetes cluster using Git repositories as the source of truth.
@@ -12,13 +24,6 @@ ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. This pr
 - **Health Status & Monitoring:** Real-time status and health tracking for deployed applications.
 - **Custom Resource Support:** Extensible to support custom Kubernetes resources and workflows.
 
-## Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ghalamif/ArgoCD.git
-   ```
-2. Follow the setup instructions in the repository to install ArgoCD and connect it to your Kubernetes cluster.
 
 ## Use Cases
 

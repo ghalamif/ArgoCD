@@ -67,7 +67,7 @@ This will create a new namespace, argocd, where Argo CD services and application
 Contributions are welcome! Please open an issue or submit a pull request for improvements, bug fixes, or feature requests.
 
 ok! that is it 
-wish you good luck.
+wish you good luck:)
 
 
 

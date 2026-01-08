@@ -1,3 +1,5 @@
+# Service for the base deployment used with Argo Rollouts examples.
+# You can switch to LoadBalancer or NodePort if needed.
 apiVersion: v1
 kind: Service
 metadata:

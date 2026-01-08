@@ -1,3 +1,5 @@
+# Deployment for the cascade deletion demo app.
+# Used to show how Argo CD deletes resources.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -1,3 +1,4 @@
+# ServiceMonitor resources to scrape Argo CD component metrics.
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -14,6 +15,7 @@ spec:
   - port: metrics
 
 ---
+# ServiceMonitor for the Argo CD API server metrics service.
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -30,6 +32,7 @@ spec:
   - port: metrics
 
 ---
+# ServiceMonitor for the Argo CD repo-server metrics service.
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -46,6 +49,7 @@ spec:
   - port: metrics
 
 ---
+# ServiceMonitor for the ApplicationSet controller metrics service.
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -60,4 +64,3 @@ spec:
     any: true
   endpoints:
   - port: metrics
-

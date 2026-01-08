@@ -1,3 +1,4 @@
+# Three Deployments with sync-wave annotations to control order.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,7 +6,7 @@ metadata:
   annotations:
     #argocd.argoproj.io/hook: PostSync
     #argocd.argoproj.io/hook-delete-policy: HookSucceeded
-    argocd.argoproj.io/sync-wave: "-5"
+    argocd.argoproj.io/sync-wave: "-5" # Run database first.
 spec:
   replicas: 1
   selector:
@@ -35,7 +36,7 @@ metadata:
   annotations:
     #argocd.argoproj.io/hook: PostSync
     #argocd.argoproj.io/hook-delete-policy: HookSucceeded
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "2" # Run backend after DB.
 spec:
   replicas: 1
   selector:
@@ -65,7 +66,7 @@ metadata:
   annotations:
     #argocd.argoproj.io/hook: PostSync
     #argocd.argoproj.io/hook-delete-policy: HookSucceeded
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "5" # Run frontend last.
 spec:
   replicas: 1
   selector:
@@ -87,6 +88,5 @@ spec:
             cpu: "5m"
         ports:
             - containerPort: 80
-
 
 

@@ -1,3 +1,5 @@
+# PostSync hook Job that sends a Slack message after sync.
+# The token is read from a Secret created by SealedSecret.
 apiVersion: batch/v1
 kind: Job
 metadata:

@@ -1,3 +1,4 @@
+<!-- Report note: project overview, goals, and setup steps. -->
 🚀 Enhancing MLOps with GitOps: Integrating ArgoCD for Efficient CI/CD in Kubernetes
 
 As part of my master's project at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), I developed an advanced AI application deployment platform leveraging GitOps principles and Kubernetes orchestration using ArgoCD. This project, categorized under the Application pillar, aimed to streamline and optimize the lifecycle of machine learning model deployment.
@@ -68,7 +69,6 @@ Contributions are welcome! Please open an issue or submit a pull request for imp
 
 ok! that is it 
 wish you good luck:)
-
 
 
 

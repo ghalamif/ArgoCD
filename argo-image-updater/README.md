@@ -1,3 +1,4 @@
+<!-- Report note: background and usage notes for Argo CD Image Updater. -->
 content source: argocd image updater [Github](https://github.com/argoproj-labs/argocd-image-updater/tree/master/docs) page
 # Argo Image Updater
 ![Blank document-4](https://github.com/ghalamif/ArgoCD/assets/9778511/e2625162-f95d-4013-9d52-2f510d048efb)

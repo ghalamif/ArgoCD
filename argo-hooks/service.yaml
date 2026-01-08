@@ -1,3 +1,5 @@
+# Service for the hooks demo deployment.
+# Exposes the app on port 3200 to the selected pods.
 apiVersion: v1
 kind: Service
 metadata:

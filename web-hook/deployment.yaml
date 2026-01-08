@@ -1,3 +1,5 @@
+# Deployment used by the web-hook demo.
+# Provides pods that the Service can route to.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

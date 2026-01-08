@@ -1,4 +1,6 @@
 ---
+# Services for the blue/green rollout.
+# Active service gets live traffic; preview service is for testing.
 kind: Service
 apiVersion: v1
 metadata:
@@ -12,6 +14,7 @@ spec:
     targetPort: 8080
 
 ---
+# Preview service points to the same pods but is not live by default.
 kind: Service
 apiVersion: v1
 metadata:

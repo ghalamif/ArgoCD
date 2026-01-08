@@ -1,3 +1,5 @@
+# Deployment for the basic app demo.
+# Defines replicas, labels, container image, and resource limits.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

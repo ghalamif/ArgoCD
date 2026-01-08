@@ -1,3 +1,7 @@
+# Argo CD Applications for each demo folder in this repo.
+# Each document sets the source repo path, destination namespace, and sync policy.
+
+# Application: basic YAML app in `basic-app`.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -23,6 +27,7 @@ spec:
       prune: true
 
 ---
+# Application: Argo Rollouts examples in `argo-rollout`.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -48,6 +53,7 @@ spec:
       prune: true
 
 ---
+# Application: Kustomize base in `kustomize-app/base`.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -73,6 +79,7 @@ spec:
       prune: true
 
 ---
+# Application: Helm chart in `helm-app/helmrollout`.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -102,6 +109,7 @@ spec:
       prune: true
 
 ---
+# Application: Argo hooks demo in `argo-hooks`.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -127,6 +135,7 @@ spec:
       prune: true
 
 ---
+# Application: webhook hooks demo in `web-hook` (separate repo).
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -152,6 +161,7 @@ spec:
       prune: true
 
 ---
+# Application: cascade deletion demo in `cascade-deletion`.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -179,6 +189,7 @@ spec:
       prune: true
 
 ---
+# Application: sync wave demo in `wave`.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -205,6 +216,7 @@ spec:
       prune: true
 
 ---
+# Application: image updater demo in `argo-image-updater/image-updater`.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -254,4 +266,3 @@ spec:
       allowEmpty: false
       
       
-

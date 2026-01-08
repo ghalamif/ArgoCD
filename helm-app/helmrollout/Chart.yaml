@@ -1,3 +1,4 @@
+# Helm chart metadata for the helm rollout demo.
 apiVersion: v2
 name: helmrollout
 description: A Helm chart for Kubernetes

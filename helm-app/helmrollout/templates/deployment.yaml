@@ -1,3 +1,5 @@
+# Helm template for the demo Deployment.
+# Pulls values for replicas, labels, and image.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

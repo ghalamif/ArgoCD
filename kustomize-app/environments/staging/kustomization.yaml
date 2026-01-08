@@ -1,4 +1,5 @@
 ---
+# Staging overlay: reuses the base resources with a new namespace.
 namespace: staging
 resources:
 - ../../base

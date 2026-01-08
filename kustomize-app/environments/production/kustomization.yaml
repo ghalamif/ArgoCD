@@ -2,6 +2,8 @@
 # Kustomize Feature List
 # https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/#kustomize-feature-list
 
+# Production overlay: sets namespace and applies a replica patch.
+
 namespace: production
 namePrefix: production-
 resources:

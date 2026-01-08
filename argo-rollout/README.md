@@ -1,3 +1,4 @@
+<!-- Report note: explains rollout strategies and how to test them. -->
 # ArgoCD Rollout
 ## Installation
 

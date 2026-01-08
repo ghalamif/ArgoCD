@@ -1,7 +1,9 @@
+# Deployment values for the chart.
 dep:
   appName: helm-app
   image: ghalamif/imagefaps:0.1.0
   replicas: 3
+# Service values for the chart.
 svc:
   port: 3200
   targetPort: 80

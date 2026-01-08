@@ -1,4 +1,5 @@
 ---
+# Production patch: increases replicas for the base deployment.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

@@ -1,3 +1,5 @@
+# Base Deployment used for rollout comparisons.
+# Defines two replicas of the base app image.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

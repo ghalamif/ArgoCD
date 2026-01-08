@@ -1,3 +1,4 @@
+# PostSync hook Job that prints or sends a success message.
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -20,6 +21,7 @@ spec:
   backoffLimit: 2
 
 ---
+# SyncFail hook Job that sends a failure message to Slack.
 apiVersion: batch/v1
 kind: Job
 metadata:

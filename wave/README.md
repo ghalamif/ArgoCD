@@ -1,3 +1,4 @@
+<!-- Report note: describes sync waves and ordering of resources. -->
 # Sync Wave
 Argo CD introduces the concept of a "sync wave" to regulate the sequence of resource synchronization (deployment) when performing an application sync operation. By default, Argo CD conducts asynchronous deployments, deploying all resources simultaneously, regardless of their order in the Git repository.
 

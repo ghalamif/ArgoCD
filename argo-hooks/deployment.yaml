@@ -1,3 +1,5 @@
+# Deployment for the Argo hooks demo.
+# Reads a token from a Secret created by the SealedSecret.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

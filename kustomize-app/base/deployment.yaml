@@ -1,4 +1,6 @@
 ---
+# Base Deployment used by kustomize overlays.
+# Provides labels, image, and resource limits.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

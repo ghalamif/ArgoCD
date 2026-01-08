@@ -1,3 +1,5 @@
+# Service for the web-hook demo deployment.
+# Exposes the app on port 3200.
 apiVersion: v1
 kind: Service
 metadata:

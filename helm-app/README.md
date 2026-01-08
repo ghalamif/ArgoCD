@@ -1,3 +1,4 @@
+<!-- Report note: explains Helm basics and how Argo CD uses Helm charts. -->
 # HELM!
 
 ## Prerequisites

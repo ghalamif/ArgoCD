@@ -1,6 +1,8 @@
 
 #!/bin/bash
+# Clear terminal for a clean menu screen.
 clear
+# Color codes for nicer status output.
 YELLOW='[0;33m'
 RED='[0;31m'
 GREEN='[0;32m'
@@ -8,6 +10,7 @@ NC='[0m' # No Color
 
 # Check if a server is running on a given port
 function check_server() {
+    # If lsof finds a process, the port is in use.
     if lsof -i:$1 > /dev/null; then
         echo -e "$2 ${GREEN}Running${NC} on port $1. 👌"
     else
@@ -31,13 +34,14 @@ find_free_port() {
 # Kill a process running on a given port
 kill_port() {
     local port=$1
+    # Only kill if something is listening on the port.
     if lsof -i:$port > /dev/null; then
         kill $(lsof -t -i:$port)
     fi
 }
 
 while true; do
-    
+    # Main menu for all actions.
     echo "Select an option:"
     echo "1 -  Server start🚀"
     echo "2 -  Server status⭕"
@@ -48,20 +52,24 @@ while true; do
     echo "7 -  ArgoCD"
     echo "8 -  kill port"
     echo "0 -  Exit🚪"
+    # Read the user choice from stdin.
     read -p "Enter your choice: " choice
 
     case $choice in
         1)
             clear
             echo "Starting servers..."
+            # Stop any old port-forward before starting a new one.
             kill_port 8080
             kubectl port-forward -n argocd svc/argocd-server 8080:443 & 
             sleep 1
             
+            # Start Prometheus port-forward.
             kill_port 9090
             kubectl port-forward service/prometheus-kube-prometheus-prometheus 9090 &
             sleep 1
             
+            # Start Grafana port-forward.
             kill_port 8085
             kubectl port-forward service/prometheus-grafana 8085:80 &
             sleep 1
@@ -71,6 +79,7 @@ while true; do
         2)
             clear
             echo "Checking server status..."
+            # Show if each service port is running.
             check_server 8080 "ArgoCD Server"
             check_server 9090 "Prometheus Server"
             check_server 8085 "Grafana Server"
@@ -78,10 +87,12 @@ while true; do
         3)
             clear
             echo "Fetching ArgoCD Image Updater Live Log..."
+            # Stream logs from the image updater.
             kubectl logs -f --selector app.kubernetes.io/name=argocd-image-updater -n argocd
             ;;
         4)  
             clear
+            # Sub-menu for Argo Rollouts tasks.
             while true; do
                 echo "ArgoCD Rollout Options:"
                 echo "1 - Getting All Rollouts"
@@ -93,16 +104,19 @@ while true; do
                 case $rollout_choice in
                     1)
                         clear
+                        # List all rollouts in the namespace.
                         kubectl get rollout -n argo-rollout-app
                         ;;
                     2)
                         clear
+                        # Show rollouts, then watch the chosen one.
                         kubectl get rollout -n argo-rollout-app
                         read -p "Enter the rollout name: " rollout_name
                         kubectl argo rollouts get rollout -n argo-rollout-app $rollout_name -w
                         ;;
                     3)
                         clear
+                        # Run the dashboard after freeing the port.
                         kill_port 3100
                         sleep 1
                         kubectl argo rollouts dashboard 3100
@@ -120,6 +134,7 @@ while true; do
             ;;
         5)
             clear
+            # Build and push a new image tag to Docker Hub.
             read -p "Enter the Tag following SEV: " tag_name
             docker tag nginx:1.23.4 ghalamif/imagefaps:$tag_name
             sleep 1
@@ -128,10 +143,12 @@ while true; do
             ;;
         6)
             clear
+            # Test image updater configuration for this image.
             argocd-image-updater test ghalamif/imagefaps
             ;;
         7)
             clear
+            # Sub-menu for ArgoCD CLI tasks.
             while true; do
                 echo "ArgoCD Options:"
                 echo "1 - List of Apps"
@@ -147,15 +164,18 @@ while true; do
                 case $argocd_choice in
                     1)
                         clear
+                        # Show all ArgoCD apps.
                         argocd app list
                         ;;
                     2)
                         clear
+                        # Apply the app manifest from the local path.
                         kubectl apply -f ~/prfaps/application.yaml
                         sleep 2
                         ;;
                     3)
                         clear
+                        # Get info, then sync the selected app.
                         argocd app list
                         sleep 1
                         read -p "Enter the app name to get its Info: " app_name
@@ -166,6 +186,7 @@ while true; do
                         ;;
                     4)
                         clear
+                        # Get details for one app.
                         argocd app list
                         sleep 1
                         read -p "Enter the app name to get its Info: " app_name
@@ -173,14 +194,17 @@ while true; do
                         ;;
                     5)
                         clear
+                        # Show the image updater app operation status.
                         argocd app get argo-image-updater2-app --show-operation
                         ;;
                     6)
                         clear
+                        # Hard refresh the image updater app.
                         argocd app get argo-image-updater2-app --hard-refresh
                         ;;  
                     7)
                         clear
+                        # Show the image updater deployment YAML.
                         kubectl get deployment image-updater-deployment -n argo-image-updater2-app -o yaml
                         ;;       
                     0)
@@ -197,11 +221,13 @@ while true; do
 
         8)
             clear
+            # Kill a process by port number.
             read -p "Enter the port number to kill: " port_number
             kill_port $port_number
             ;;   
         0)
             clear
+            # Exit the script.
             echo "You Exited From ${GREEN}FAPS${NC}. 👋"
             exit 0
             ;;

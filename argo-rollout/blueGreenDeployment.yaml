@@ -1,3 +1,5 @@
+# Blue/green Rollout resource.
+# Active and preview services control traffic switching.
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:

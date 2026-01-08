@@ -1,3 +1,4 @@
+# Services for the wave demo components.
 apiVersion: v1
 kind: Service
 metadata:
@@ -9,6 +10,7 @@ spec:
     - port: 3200
       targetPort: 80
 ---
+# Service for the frontend pods.
 apiVersion: v1
 kind: Service
 metadata:
@@ -20,6 +22,7 @@ spec:
     - port: 3200
       targetPort: 80
 ---
+# Service for the database pods.
 apiVersion: v1
 kind: Service
 metadata:

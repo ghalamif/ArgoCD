@@ -1,3 +1,4 @@
+<!-- Report note: explains Argo CD hooks and hook types. -->
 # HOOKS
 
 Hooks are ways to run scripts before, during, and after a Sync operation.

@@ -1,3 +1,5 @@
+# Helm template for the image updater Deployment.
+# Uses values to set name, replicas, and image.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

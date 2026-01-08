@@ -22,6 +22,68 @@ Encrypted secret resources for secure token storage.
 ### 4. **PostSync Hook Job** (`job.yaml`)
 An ArgoCD hook that executes after successful deployment to send Slack notifications.
 
+### 5. **Kustomization File** (`kustomization.yaml`)
+Kustomize configuration that allows this directory to be used as a base for customization in different environments.
+
+---
+
+## Using This as a Kustomize Base
+
+This directory includes a `kustomization.yaml` file that makes it usable as a Kustomize base. This enables you to:
+- Reference this base from overlay directories
+- Customize configurations for different environments (dev, staging, production)
+- Apply transformations without modifying the base files
+
+### Kustomize Build
+
+To generate the full manifest:
+
+```bash
+kubectl kustomize /home/runner/work/ArgoCD/ArgoCD/argo-hooks
+```
+
+Or apply directly:
+
+```bash
+kubectl apply -k /home/runner/work/ArgoCD/ArgoCD/argo-hooks
+```
+
+### Creating Overlays
+
+You can create environment-specific overlays that reference this base:
+
+**Example: `overlays/production/kustomization.yaml`**
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Reference the base
+bases:
+  - ../../argo-hooks
+
+# Override namespace for production
+namespace: production-argo-hooks
+
+# Add production-specific labels
+commonLabels:
+  environment: production
+  
+# Increase replicas for production
+replicas:
+  - name: argo-hooks-deployment
+    count: 5
+```
+
+### Important Note About job.yaml
+
+The `job.yaml` file is **not included** in the kustomization resources because:
+- It uses `generateName` instead of `name` (required for ArgoCD hooks)
+- `generateName` creates unique job instances on each execution
+- Kustomize requires resources to have a static `metadata.name` field
+- ArgoCD handles hook resources separately from regular resources
+
+When deploying via ArgoCD, the job will still be deployed correctly as ArgoCD processes all YAML files in the directory, not just those listed in the kustomization.
+
 ---
 
 ## Detailed Component Analysis
@@ -290,7 +352,7 @@ kubeseal --format=yaml < secret.yaml > sealed-secretss.yaml
 rm secret.yaml
 ```
 
-#### 2. Deploy via ArgoCD
+#### 3. Deploy via ArgoCD
 
 Create an ArgoCD Application resource:
 
@@ -315,7 +377,7 @@ spec:
       selfHeal: true
 ```
 
-#### 3. Apply and Sync
+#### 4. Apply and Sync
 
 ```bash
 # Apply the ArgoCD application
@@ -323,6 +385,12 @@ kubectl apply -f application.yaml
 
 # Or sync via CLI
 argocd app sync argo-hooks-app
+
+# Or deploy directly with kubectl (without ArgoCD)
+kubectl apply -k /path/to/argo-hooks
+
+# Or deploy without kustomize
+kubectl apply -f /path/to/argo-hooks/
 ```
 
 ### Verification

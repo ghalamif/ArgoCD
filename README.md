@@ -1,75 +1,65 @@
-<!-- Report note: project overview, goals, and setup steps. -->
-🚀 Enhancing MLOps with GitOps: Integrating ArgoCD for Efficient CI/CD in Kubernetes
+# ArgoCD GitOps MLOps Demonstration Repository
 
-As part of my master's project at Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), I developed an advanced AI application deployment platform leveraging GitOps principles and Kubernetes orchestration using ArgoCD. This project, categorized under the Application pillar, aimed to streamline and optimize the lifecycle of machine learning model deployment.
+## Report Overview
+This repository documents a master's project at Friedrich-Alexander-Universitaet
+Erlangen-Nuernberg (FAU) focused on improving MLOps with GitOps. The work
+demonstrates how Argo CD can manage Kubernetes-native CI/CD/CT workflows for
+machine learning applications through declarative configuration and automated
+syncing.
 
-By integrating Continuous Integration, Continuous Deployment (CI/CD), and Continuous Training (CT), the system addressed the complex requirements of maintaining up-to-date ML models and containerized AI workloads in dynamic environments. I would also like to thank [Benedikt](https://github.com/bensch98) for his supervision and support throughout the project.
+The project emphasizes:
+- GitOps-driven automation for deployment workflows
+- Safe rollout strategies using Argo Rollouts
+- Automated image updates with Argo CD Image Updater
+- Observability and operational reliability practices
 
-**Key areas of focus:**
+For background on Argo CD, see the official documentation:
+https://argo-cd.readthedocs.io/
 
-Automating deployment workflows with GitOps and ArgoCD
-Managing Kubernetes clusters with Argo Rollouts and ArgoCD Image Updater
-Improving reliability, scalability, and maintainability of AI systems
+## How This Repository Works
+The repository is organized as a set of focused demos. Each folder contains
+Kubernetes manifests (and a local README) that illustrate a specific Argo CD
+feature. The core GitOps flow is:
 
+1) Argo CD watches the Git repository for changes.
+2) The `application.yaml` file defines multiple Argo CD Application resources,
+   one per demo folder.
+3) Each Application declares the source path in Git and the destination
+   namespace in the cluster.
+4) Automated sync policies keep the cluster state aligned with Git, enabling
+   self-heal and pruning when enabled.
 
+Some demos reference a separate repository to isolate experiments such as
+webhook hooks or image-updater flows; these links are called out in
+`application.yaml`.
 
-- **Focus Areas & Achievements:**
+## Directory Structure
+Top-level contents and their purpose:
 
-  - Automated deployment workflows using GitOps and ArgoCD to achieve declarative, version-controlled, and auditable CI/CD pipelines for AI/ML workloads.
-  - Managed Kubernetes clusters with Argo Rollouts and ArgoCD Image Updater, automating container image updates and ensuring safe rollouts of new model versions and dependencies.
-  - Designed and documented multiple deployment strategies—Rolling, Recreate, Blue-Green, and Canary—tailored for ML pipelines with stateful components and seamless version transitions.
-  - Improved reliability, scalability, and maintainability of AI systems by implementing operational best practices like automated rollbacks, health monitoring, and secure multi-cluster management.
-  - Developed custom tooling and operational workflows to enhance application observability, management, and recovery, enabling consistent and dependable AI service delivery.
+- `application.yaml`: Argo CD Application definitions for the demo folders.
+- `project-flow.sh`: Helper script for port-forwarding, logs, rollouts, and
+  image-updater tasks.
+- `Untitled Diagram.drawio`: Architecture or flow diagram used for reporting.
+- `argo-hooks/`: Argo CD hook demo with a PostSync job and SealedSecret usage.
+- `argo-image-updater/`: Argo CD Image Updater demo, including a Helm chart.
+  - `argo-image-updater/image-updater/`: Helm chart sources (templates, values).
+- `argo-rollout/`: Rollout strategy examples (rolling, recreate, blue-green,
+  canary).
+- `basic-app/`: Minimal Deployment and Service for a basic Argo CD sync demo.
+- `cascade-deletion/`: Demonstrates cascade vs non-cascade deletion and
+  finalizers.
+- `helm-app/`: Helm-based app example for declarative GitOps with Argo CD.
+  - `helm-app/helmrollout/`: Helm chart sources (templates, values).
+- `kustomize-app/`: Kustomize base and environment overlays.
+  - `kustomize-app/base/`: Base manifests.
+  - `kustomize-app/environments/`: Staging and production overlays.
+- `service-monitor/`: Prometheus ServiceMonitor example for Argo CD
+  observability.
+- `wave/`: Sync wave ordering example for resource sequencing.
+- `web-hook/`: Hook type examples and hook cleanup patterns.
 
-
-# ArgoCD
-![argocd](https://github.com/user-attachments/assets/8adc82b5-c37c-4d6e-a882-0cc114af6d65)
-*Figure 1:[Source](https://medium.com/@kalimitalha8/implementing-gitops-with-argocd-a-step-by-step-guide-b79f723b1a43)*
-
-ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. This project allows users to manage application deployments and configurations in a Kubernetes cluster using Git repositories as the source of truth.
-
-## Features
-
-- **GitOps Workflow:** Declaratively define and manage Kubernetes resources using Git.
-- **Automated Sync:** Automatically synchronize the state of your applications in the cluster to match the configuration defined in Git.
-- **Visual Dashboard:** Web-based UI for managing and visualizing application deployments.
-- **Access Control:** Role-Based Access Control (RBAC) for secure and controlled operations.
-- **Multi-Cluster Support:** Manage applications across multiple Kubernetes clusters.
-- **Health Status & Monitoring:** Real-time status and health tracking for deployed applications.
-- **Custom Resource Support:** Extensible to support custom Kubernetes resources and workflows.
-
-
-## Use Cases
-
-- Continuous delivery for Kubernetes applications.
-- Infrastructure as Code (IaC) deployments.
-- Automated rollback and self-healing of applications.
-- Secure and auditable change management.
-
-## Documentation
-
-For comprehensive documentation, please refer to the [official ArgoCD documentation](https://argo-cd.readthedocs.io/).
-
-# How To Install ArgoCD
-## Requirements
-Installed kubectl command-line tool.
-Have a kubeconfig file (default location is ~/.kube/config).
-### 1. Install Argo CD
-
-```bash
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-```
-This will create a new namespace, argocd, where Argo CD services and application resources will live.
-
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for improvements, bug fixes, or feature requests.
-
-ok! that is it 
-wish you good luck:)
-
-
-
-
+## Reproducibility Notes
+To reproduce the demos in a cluster, Argo CD and the required controllers
+(Argo Rollouts, Sealed Secrets, and optionally Prometheus) should be installed.
+Each demo directory includes its own local README with setup steps and
+requirements.
